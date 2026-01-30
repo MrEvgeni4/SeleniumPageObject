@@ -2,6 +2,7 @@ package patterns;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.remote.LocalFileDetector;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
 import java.net.MalformedURLException;
@@ -11,7 +12,7 @@ public class RemoteCreator extends DriverCreator {
 
     private final URL remoteUrl;
 
-    public RemoteCreator(String remoteUrl, String browser) {
+    public RemoteCreator(String remoteUrl) {
         try {
             this.remoteUrl = new URL(remoteUrl);
         } catch (MalformedURLException e) {
@@ -26,6 +27,10 @@ public class RemoteCreator extends DriverCreator {
         options.addArguments("--disable-dev-shm-usage");
         options.addArguments("--window-size=1920,1080");
 
-        return new RemoteWebDriver(remoteUrl, options);
+        RemoteWebDriver driver = new RemoteWebDriver(remoteUrl, options);
+
+        driver.setFileDetector(new LocalFileDetector());
+
+        return driver;
     }
 }

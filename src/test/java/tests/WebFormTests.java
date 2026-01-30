@@ -145,7 +145,8 @@ public class WebFormTests extends BaseTest{
 
     @Test
     void fileInputAcceptFileTest() {
-        File file = new File("src/test/resources/mando.jpg");
+        File file = new File("src/test/resources/mando.jpg").getAbsoluteFile();
+        assertTrue(file.exists(), "File not found: " + file);
         page.uploadFile(file);
 
         String actualValue = page.fileInputValue();

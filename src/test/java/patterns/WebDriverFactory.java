@@ -12,7 +12,7 @@ public class WebDriverFactory {
         }
 
         if (remoteUrl != null && !remoteUrl.isBlank()) {
-            return new RemoteCreator(remoteUrl, browser).create();
+            return new RemoteCreator(remoteUrl).create();
         }
 
         DriverCreator creator = switch (browser.toLowerCase()) {
