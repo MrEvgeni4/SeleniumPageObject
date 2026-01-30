@@ -9,7 +9,7 @@ public class Footer {
     private final WebDriver driver;
     private final WebDriverWait wait;
 
-    private final By authorLink = By.xpath("//a[normalize-space()='Boni García']");
+    private final By authorLink = By.xpath("//a[text()='Boni García']");
 
     public Footer(WebDriver driver, WebDriverWait wait) {
         this.driver = driver;

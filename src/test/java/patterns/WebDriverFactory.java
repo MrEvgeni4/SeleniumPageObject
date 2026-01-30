@@ -6,6 +6,15 @@ public class WebDriverFactory {
 
     public static WebDriver createWebDriver(String browser) {
 
+        String remoteUrl = System.getProperty("selenium.remote.url");
+        if (remoteUrl == null || remoteUrl.isBlank()) {
+            remoteUrl = System.getenv("SELENIUM_REMOTE_URL");
+        }
+
+        if (remoteUrl != null && !remoteUrl.isBlank()) {
+            return new RemoteCreator(remoteUrl, browser).create();
+        }
+
         DriverCreator creator = switch (browser.toLowerCase()) {
             case "chrome" -> new ChromeCreator();
             case "edge" -> new EdgeCreator();
