@@ -82,6 +82,12 @@ jobs:
           allure_report: site
           allure_history: allure-history
 
+      - name: Fix permissions for site
+        if: always()
+        run: |
+          sudo chown -R "$USER:$USER" site allure-history
+          sudo chmod -R u+rwX site allure-history
+
       - name: Add Gradle HTML report to site
         if: always()
         run: |
