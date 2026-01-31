@@ -67,6 +67,12 @@ jobs:
           fetch-depth: 0
           path: gh-pages
 
+      - name: Prepare directories
+        if: always()
+        run: |
+          rm -rf site allure-history
+          mkdir -p site allure-history
+
       - name: Build Allure report
         uses: simple-elf/allure-report-action@v1.13
         if: always()
@@ -74,13 +80,13 @@ jobs:
           allure_results: build/allure-results
           gh_pages: gh-pages
           allure_report: site
-          allure_history: site
+          allure_history: allure-history
 
       - name: Add Gradle HTML report to site
         if: always()
         run: |
           mkdir -p site/gradle-test-report
-          cp -R build/reports/tests/test/* site/gradle-test-report/ || true
+          cp -R build/reports/tests/test/* site/gradle-test-report/
 
       - name: Deploy to GitHub Pages (gh-pages)
         if: always()
