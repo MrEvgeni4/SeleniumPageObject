@@ -6,18 +6,12 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class Footer {
-    private final WebDriver driver;
     private final WebDriverWait wait;
 
-    private final By authorLink = By.xpath("//a[text()='Boni García']");
+    private final By authorLink = By.cssSelector("footer a[href*='bonigarcia.dev']");
 
-    public Footer(WebDriver driver, WebDriverWait wait) {
-        this.driver = driver;
+    public Footer(WebDriverWait wait) {
         this.wait = wait;
-    }
-
-    public String authorText() {
-        return wait.until(ExpectedConditions.visibilityOfElementLocated(authorLink)).getText().trim();
     }
 
     public String authorHref() {

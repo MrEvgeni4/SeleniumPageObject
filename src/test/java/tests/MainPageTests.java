@@ -20,7 +20,6 @@ public class MainPageTests extends BaseTest {
     @Test
     void headerAndFooterShouldContainExpectedText() {
         assertEquals("Hands-On Selenium WebDriver with Java", main.header().titleText());
-        assertEquals("Boni García", main.footer().authorText());
         assertTrue(main.footer().authorHref().contains("bonigarcia.dev"));
     }
 

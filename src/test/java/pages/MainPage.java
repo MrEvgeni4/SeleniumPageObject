@@ -39,6 +39,6 @@ public class MainPage extends BasePage{
     }
 
     public Footer footer() {
-        return new Footer(driver, wait);
+        return new Footer(wait);
     }
 }

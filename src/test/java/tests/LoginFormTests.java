@@ -33,7 +33,7 @@ public class LoginFormTests extends BaseTest{
 
     @Test
     void validCredentialsShouldNavigateToSuccessPage() {
-        LoginSuccessPage success = page.loginValid(validLogin, validPassword);
+        LoginSuccessPage success = page.loginValid(appLogin(), appPassword());
 
         assertEquals("Login form", success.titleSuccessText());
         assertTrue(success.successText().contains("Login successful"));
